@@ -1,0 +1,6 @@
+{
+    "name": "vendor/logistic",
+    "require": {
+        "rubix/ml": "^0.2.3"
+    }
+}
