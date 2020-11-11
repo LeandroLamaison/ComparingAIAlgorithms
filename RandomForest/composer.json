@@ -1,6 +1,0 @@
-{
-    "name": "trabalho-ia/random-forest",
-    "require": {
-        "rubix/ml": "^0.2.3"
-    }
-}

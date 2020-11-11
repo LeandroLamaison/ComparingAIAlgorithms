@@ -7,7 +7,7 @@
     array (
     ),
     'reference' => '0658cccb8f62193ebea589efdaa16c345fa1ad46',
-    'name' => 'vendor/logistic',
+    'name' => 'trabalho/ia',
   ),
   'versions' => 
   array (
@@ -119,7 +119,7 @@
       ),
       'reference' => 'e70aa8b064c5b72d3df2abd5ab1e90464ad009de',
     ),
-    'vendor/logistic' => 
+    'trabalho/ia' => 
     array (
       'pretty_version' => 'dev-develop',
       'version' => 'dev-develop',
