@@ -1,0 +1,10 @@
+test.model
+/vendor
+composer.lock
+.phpunit.result.cache
+.php_cs.cache
+Thumbs.db
+.DS_Store
+/.idea
+/.vscode
+/.vs
