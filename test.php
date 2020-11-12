@@ -5,11 +5,11 @@ use Rubix\ML\CrossValidation\Reports\AggregateReport;
 use Rubix\ML\CrossValidation\Reports\ConfusionMatrix;
 use Rubix\ML\CrossValidation\Reports\MulticlassBreakdown;
 
-return function ($dataset, $estimator) {
+return function ($dataset, $estimator, $output) {
 
     ini_set('memory_limit', '-1');
 
-    echo 'Fazendo as predições...' . PHP_EOL;
+    echo 'Fazendo predições...' . PHP_EOL;
     
     $predictions = $estimator->predict($dataset->randomize());
     
@@ -22,7 +22,7 @@ return function ($dataset, $estimator) {
     
     echo $result;
     
-    $result->toJSON()->write('output/report.json');
+    $result->toJSON()->write("output/$output.json");
     
-    echo 'Resultado salvo no arquivo report.json' . PHP_EOL;
+    echo "Resultado salvo no arquivo $output.json" . PHP_EOL;
 };

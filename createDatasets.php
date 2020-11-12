@@ -10,7 +10,7 @@ return function ($name) {
     
     echo 'Carregando dados para a memória...' . PHP_EOL;
     
-    $dataset = Labeled::fromIterator(new CSV(__DIR__. '/datasets' . '/' . $name . '.csv', true));
+    $dataset = Labeled::fromIterator(new CSV(__DIR__. "/datasets/$name.csv", true));
     
     $datasets = $dataset->stratifiedSplit(0.8);
     

@@ -7,8 +7,10 @@ $testPredictions = require 'test.php';
 
 [$train, $test] = $createDatasets('rain');
 
+echo "Rodando algoritmo NaiveBayes com dataset da chuva" . PHP_EOL;
 $naiveBayesEstimator = $naiveBayes($train);
-$testPredictions($test, $naiveBayesEstimator);
+$testPredictions($test, $naiveBayesEstimator, 'Rain-NaiveBayes');
 
+echo "Rodando algoritmo RandomForest com dataset da chuva" . PHP_EOL;
 $randomForestEstimator = $randomForest($train);
-$testPredictions($test, $randomForestEstimator);
+$testPredictions($test, $randomForestEstimator, 'Rain-RandomForest');
