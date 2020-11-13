@@ -14,3 +14,15 @@ $testPredictions($test, $naiveBayesEstimator, 'Rain-NaiveBayes');
 echo "Rodando algoritmo RandomForest com dataset da chuva" . PHP_EOL;
 $randomForestEstimator = $randomForest($train);
 $testPredictions($test, $randomForestEstimator, 'Rain-RandomForest');
+
+
+
+[$train, $test] = $createDatasets('mushrooms');
+
+echo "Rodando algoritmo NaiveBayes com dataset dos cogumelos" . PHP_EOL;
+$naiveBayesEstimator = $naiveBayes($train);
+$testPredictions($test, $naiveBayesEstimator, 'Mushrooms-NaiveBayes');
+
+echo "Rodando algoritmo RandomForest com dataset dos cogumelos" . PHP_EOL;
+$randomForestEstimator = $randomForest($train);
+$testPredictions($test, $randomForestEstimator, 'Mushrooms-RandomForest');
