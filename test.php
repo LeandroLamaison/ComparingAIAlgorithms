@@ -5,13 +5,15 @@ use Rubix\ML\CrossValidation\Reports\AggregateReport;
 use Rubix\ML\CrossValidation\Reports\ConfusionMatrix;
 use Rubix\ML\CrossValidation\Reports\MulticlassBreakdown;
 
-return function ($dataset, $estimator, $output) {
+return function ($dataset, $estimatorData, $output) {
+    $usage = new stdClass();
+    $initialTimeStamp = microtime(true);
 
     ini_set('memory_limit', '-1');
 
     echo 'Fazendo predições...' . PHP_EOL;
     
-    $predictions = $estimator->predict($dataset->randomize());
+    $predictions = $estimatorData -> estimator->predict($dataset->randomize());
     
     $report = new AggregateReport([
         new MulticlassBreakdown(),
@@ -21,8 +23,13 @@ return function ($dataset, $estimator, $output) {
     $result = $report->generate($predictions, $dataset->labels());
     
     echo $result;
-    
+
     $result->toJSON()->write("output/$output.json");
-    
+    $usage -> time = microtime(true) - $initialTimeStamp;
+    $usage -> mem_usage = $estimatorData -> mem_usage;
+    $usage -> mem_peak = $estimatorData -> mem_peak;
+
     echo "Resultado salvo no arquivo $output.json" . PHP_EOL;
+
+    return $usage;
 };

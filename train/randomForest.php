@@ -8,12 +8,17 @@ use Rubix\ML\Classifiers\ClassificationTree;
 return function ($dataset) {
 
     ini_set('memory_limit', '-1');
+
+    $data = new stdClass();
     
-    $estimator = new RandomForest(new ClassificationTree(10), 3, 0.1);
+    $data -> estimator = new RandomForest(new ClassificationTree(10), 3, 0.1);
     
     echo 'Treinando...' .  PHP_EOL;
     
-    $estimator->train($dataset);
+    $data -> estimator->train($dataset);
 
-    return $estimator;
+    $data -> mem_usage = memory_get_usage();
+    $data -> mem_peak = memory_get_peak_usage();
+
+    return $data;
 };
