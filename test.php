@@ -7,7 +7,6 @@ use Rubix\ML\CrossValidation\Reports\MulticlassBreakdown;
 
 return function ($dataset, $estimatorData, $output) {
     $usage = new stdClass();
-    $initialTimeStamp = microtime(true);
 
     ini_set('memory_limit', '-1');
 
@@ -25,7 +24,7 @@ return function ($dataset, $estimatorData, $output) {
     echo $result;
 
     $result->toJSON()->write("output/$output.json");
-    $usage -> time = microtime(true) - $initialTimeStamp;
+    $usage -> time = $estimatorData -> time;
     $usage -> mem_usage = $estimatorData -> mem_usage;
     $usage -> mem_peak = $estimatorData -> mem_peak;
 

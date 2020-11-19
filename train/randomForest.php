@@ -6,6 +6,7 @@ use Rubix\ML\Classifiers\RandomForest;
 use Rubix\ML\Classifiers\ClassificationTree;
 
 return function ($dataset) {
+    $initialTimeStamp = microtime(true);
 
     ini_set('memory_limit', '-1');
 
@@ -17,8 +18,12 @@ return function ($dataset) {
     
     $data -> estimator->train($dataset);
 
-    $data -> mem_usage = memory_get_usage();
-    $data -> mem_peak = memory_get_peak_usage();
+    $time = microtime(true) - $initialTimeStamp;
+    $mem_usage = memory_get_usage();
+    $mem_peek = memory_get_peak_usage();
+    $data -> mem_usage = $mem_usage;
+    $data -> mem_peak = $mem_peek;
+    $data -> time = $time;
 
     return $data;
 };
